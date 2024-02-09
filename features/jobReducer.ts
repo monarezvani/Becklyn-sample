@@ -13,6 +13,7 @@ interface stateProps {
   totalPages: number;
   JobsToShowPerPage: any[];
   firstPage: number;
+  currentPage: number;
 }
 
 const initialState: stateProps = {
@@ -25,6 +26,7 @@ const initialState: stateProps = {
   totalPages: 1,
   JobsToShowPerPage: [],
   firstPage: 1,
+  currentPage: 1,
 };
 
 export const jobReducer = createSlice({
@@ -85,10 +87,13 @@ export const jobReducer = createSlice({
         state.itemPerPage
       );
     },
-    onPagination: (state, action) => {
+    onShowPageOnPagination: (state, action) => {
       const startIndex = (action.payload - 1) * state.itemPerPage;
       const endIndex = startIndex + state.itemPerPage;
       state.JobsToShowPerPage = state.jobsData.slice(startIndex, endIndex);
+    },
+    onChangePage: (state, action) => {
+      state.currentPage = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -116,11 +121,18 @@ export const jobReducer = createSlice({
 });
 
 export default jobReducer.reducer;
-export const { onFilterLevel, onFilterCity, onFilterDepartment, onPagination } =
-  jobReducer.actions;
+export const {
+  onFilterLevel,
+  onFilterCity,
+  onFilterDepartment,
+  onShowPageOnPagination,
+  onChangePage,
+} = jobReducer.actions;
 export const jobs = (state: RootState) => state.jobsData;
 export const loading = (state: RootState) => state.status;
 export const JobsToShowPerPage = (state: RootState) => state.JobsToShowPerPage;
 export const totalPages = (state: RootState) => state.totalPages;
 export const totalJobs = (state: RootState) => state.totalJobs;
 export const filteredJobs = (state: RootState) => state.filteredJobs;
+export const firstPage = (state: RootState) => state.firstPage;
+export const currentPage = (state: RootState) => state.currentPage;

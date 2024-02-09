@@ -4,15 +4,14 @@ import { useMemo } from "react";
 
 interface PaginationProps {
   siblingCount: number;
-  currentPage: number;
   isMobile: boolean;
 }
 export const DOTS = "...";
 export const usePagination = ({
   siblingCount = 1,
-  currentPage,
   isMobile,
 }: PaginationProps) => {
+  const currentPageNumber = useAppSelector((state) => state.currentPage);
   const totalPageCount = useAppSelector(totalPages);
   const paginationRange = useMemo(() => {
     const totalPageNumbers = siblingCount + 5;
@@ -25,10 +24,10 @@ export const usePagination = ({
     if (totalPageNumbers >= totalPageCount) {
       return range(1, totalPageCount);
     }
-    const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
+    const leftSiblingIndex = Math.max(currentPageNumber - siblingCount, 1);
 
     const rightSiblingIndex = Math.min(
-      currentPage + siblingCount,
+      currentPageNumber + siblingCount,
       totalPageCount
     );
 
@@ -67,7 +66,7 @@ export const usePagination = ({
       let middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
-  }, [currentPage, siblingCount, totalPageCount, isMobile]);
+  }, [currentPageNumber, siblingCount, totalPageCount, isMobile]);
 
   return paginationRange;
 };

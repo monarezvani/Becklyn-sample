@@ -1,35 +1,34 @@
-import { useAppDispatch } from "@/features/jobActions";
+import { useAppDispatch, useAppSelector } from "@/features/jobActions";
 
-import { onPagination } from "@/features/jobReducer";
+import { onChangePage, onShowPageOnPagination } from "@/features/jobReducer";
 import Styles from "./Pagination.module.css";
-import { useState } from "react";
 import { DOTS, usePagination } from "@/utilites/usePagination";
 
 export const Pagination = () => {
-  const [currentPage, setCurrentPage] = useState(1);
   const isMobile = window.matchMedia("(max-width:576px)").matches;
   const dispatch = useAppDispatch();
 
   const siblingCount = 1;
 
   const paginationRange = usePagination({
-    currentPage,
     siblingCount,
     isMobile,
   });
 
+  const currentPageNumber = useAppSelector((state) => state.currentPage);
+
   let lastPage = paginationRange && paginationRange[paginationRange.length - 1];
 
   const onPageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-    dispatch(onPagination(pageNumber));
+    dispatch(onChangePage(pageNumber));
+    dispatch(onShowPageOnPagination(pageNumber));
   };
   const onNextPage = () => {
-    onPageChange(currentPage + 1);
+    dispatch(onChangePage(currentPageNumber + 1));
   };
 
   const onPreviousPage = () => {
-    onPageChange(currentPage - 1);
+    dispatch(onChangePage(currentPageNumber - 1));
   };
 
   return (
@@ -37,11 +36,11 @@ export const Pagination = () => {
       <div className={Styles.pagination}>
         <button
           className={
-            currentPage === 1
+            currentPageNumber === 1
               ? `${Styles.disabledButton} ${Styles.pageButton} `
               : `${Styles.pageButton}`
           }
-          disabled={currentPage === 1}
+          disabled={currentPageNumber === 1}
           onClick={onPreviousPage}
         >
           <span className={Styles.backPageImage}></span>
@@ -66,7 +65,7 @@ export const Pagination = () => {
                 <button
                   key={pageNumber}
                   className={
-                    pageNumber === currentPage
+                    pageNumber === currentPageNumber
                       ? `${Styles.selectedPaginationButton} ${Styles.paginationButton}`
                       : `${Styles.paginationButton}`
                   }
@@ -80,11 +79,11 @@ export const Pagination = () => {
         </div>
         <button
           className={
-            currentPage === lastPage
+            currentPageNumber === lastPage
               ? `${Styles.disabledButton} ${Styles.pageButton}`
               : `${Styles.pageButton}`
           }
-          disabled={currentPage === lastPage}
+          disabled={currentPageNumber === lastPage}
           onClick={onNextPage}
         >
           <span className={Styles.PageText}>Nächste</span>
