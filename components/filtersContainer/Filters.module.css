@@ -1,0 +1,30 @@
+.FilterHeader {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--gray-75);
+  padding: 3rem;
+}
+
+.FilterSelectContainer {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .FilterTitleHeader {
+    font-size: var(--font-size-16);
+  }
+}
+
+@media (max-width: 576px) {
+  .FilterSelectContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .FilterHeader {
+    padding: 0.5rem;
+  }
+}

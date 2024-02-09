@@ -1,0 +1,43 @@
+.FilterTextContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.FilterTitleHeader {
+  text-align: center;
+  font-family: "Gotham-Medium";
+  letter-spacing: -0.32px;
+  color: var(--primary-600-base);
+  font-size: var(--font-size-16);
+  padding-top: 2rem;
+  letter-spacing: var(--character-spacing--0-32);
+  margin-bottom: 1rem;
+}
+.FilterTitle {
+  font-family: "Gotham-Bold";
+  text-align: center;
+  font-size: var(--font-size-48);
+  color: var(--secondary);
+  letter-spacing: var(--character-spacing--1-44);
+}
+
+@media (max-width: 768px) {
+  .FilterTitle {
+    font-size: var(--font-size-36);
+  }
+  .FilterTitleHeader {
+    font-size: var(--font-size-16);
+  }
+}
+
+@media (max-width: 576px) {
+  .FilterTitle {
+    font-size: var(--font-size-30);
+  }
+  .FilterTitleHeader {
+    font-size: var(--font-size-14);
+  }
+}

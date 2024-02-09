@@ -1,0 +1,6 @@
+.NotFoundMessage {
+  width: 100%;
+  font-size: var(--font-size-16);
+  color: var(--primary-600-base);
+  text-align: center;
+}

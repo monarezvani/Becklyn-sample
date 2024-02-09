@@ -1,0 +1,71 @@
+.paginationItem {
+  background-color: transparent;
+  color: var(--gray-600-placeholder-text);
+  font-family: "Gotham-Book";
+  letter-spacing: var(--character-spacing--0-28);
+  cursor: pointer;
+}
+
+.paginationButton {
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.selectedPaginationItem {
+  color: var(--primary-600-base);
+}
+.DotButton {
+  cursor: default;
+}
+.selectedPaginationButton {
+  background-color: var(--primary-75);
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.paginationContainer {
+  border-top: 1px solid var(gray-200);
+}
+.backPageImage {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid var(--arrow-color);
+  margin-right: 1rem;
+}
+.pageButton {
+  display: flex;
+  align-items: center;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+.PageText {
+  color: var(--gray-600-placeholder-text);
+  letter-spacing: var(--character-spacing--0-28);
+  font-size: var(--font-size-14);
+}
+.nextPageArrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid var(--arrow-color);
+  margin-left: 1rem;
+}
+.disabledButton {
+  cursor: default;
+}
+
+@media (max-width: 576px) {
+  .PageText {
+    display: none;
+  }
+}

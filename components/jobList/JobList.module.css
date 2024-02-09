@@ -1,0 +1,67 @@
+.JobList {
+  padding: 1rem 20%;
+}
+.JobListTitle {
+  font-family: "Gotham-Medium";
+  font-size: var(--font-size-36);
+  color: var(--secondary);
+  display: flex;
+  font-size: center;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.JobListItem {
+  padding: 1rem;
+  background-color: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  margin: 1rem;
+  border-radius: 16px;
+}
+.JobItemDepartment {
+  color: var(--primary-600-base);
+  font-family: "Gotham-Medium";
+  letter-spacing: var(--character-spacing--0-28);
+  text-align: left;
+}
+.JobItemTitle {
+  font-size: var(--font-size-18);
+  color: var(--unnamed-color-292929);
+  letter-spacing: var(--character-spacing--0-36);
+  font-family: "Gotham-Medium";
+}
+.JobItemCity {
+  color: var(--gray-700-text-content);
+  font-size: var(--font-size-16);
+  margin-left: 0.5rem;
+}
+.JobItemType {
+  color: var(--gray-700-text-content);
+  font-size: var(--font-size-16);
+  margin-left: 0.5rem;
+}
+.JobItemFooter {
+  display: flex;
+  flex-direction: row;
+}
+.JobItemLocation {
+  display: flex;
+  align-items: center;
+}
+.JobItemTypeContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+}
+@media (max-width: 768px) {
+  .JobList {
+    padding: 1rem 10%;
+  }
+}
+@media (max-width: 576px) {
+  .JobList {
+    padding: 0.5rem;
+  }
+  .JobListItem {
+    margin: 1rem 0;
+  }
+}
